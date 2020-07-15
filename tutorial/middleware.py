@@ -1,5 +1,4 @@
 import re
-
 from django.conf import settings
 from django.shortcuts import redirect
 from django.contrib.auth import logout

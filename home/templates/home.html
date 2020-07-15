@@ -7,18 +7,30 @@
 {% endblock %}
 
 {% block body %}
-
-This is your home
-<br>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
-{{ text }}
-{% for post in posts %}
-<h1>{{post.post}}</h1>
-<p>Posted by {{ post.user.get_full_name }} on {{post.date}}</p>
-{% endfor %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>This is your home</h2>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        {{ text }}
+        {% for post in posts %}
+        <h1>{{post.post}}</h1>
+        <p>Posted by {{ post.user.get_full_name }} on {{post.created}}</p>
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <h2>Other People</h2>
+        {% for user in users %}
+        <a href="{% url 'account:profile' %}">
+            {{ user.username}}<br>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
