@@ -8,21 +8,20 @@
 
 {% block body %}
 
-<div class="container">
-    <p>
-        Username: {{ user }}<br>
-        First Name: {{ user.first_name }}<br>
-        Last Name: {{ user.last_name }}<br>
-        Email: {{ user.email }}<br>
-        Description: {{ user.userprofile.description }}<br>
-        City: {{ user.userprofile.city }}<br>
-        Website: {{ user.userprofile.website }}<br>
-        Phone: {{ user.userprofile.phone }}<br>
-        <img src="{{ user.userprofile.image.url}}" width="300">
-
-        <br>
-        <a href="{% url 'account:edit-profile' %}">Edit Profile</a>
-    </p>
-</div>
+<p>
+    Username: {{ user }}<br>
+    First Name: {{ user.first_name }}<br>
+    Last Name: {{ user.last_name }}<br>
+    Email: {{ user.email }}<br>
+    Description: {{ user.userprofile.description }}<br>
+    City: {{ user.userprofile.city }}<br>
+    Website: {{ user.userprofile.website }}<br>
+    Phone: {{ user.userprofile.phone }}<br>
+    {% if user.userprofile.image %}
+    <img src="{{ user.userprofile.image.url}}" width="300">
+    {% endif %}
+    <br>
+    <a href="{% url 'account:edit-profile' %}">Edit Profile</a>
+</p>
 
 {% endblock %}

@@ -10,11 +10,10 @@
 
 <h1>Register</h1>
 <br>
-<div class="container">
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Submit</button>
-    </form>
-</div>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+</form>
+
 {% endblock %}
